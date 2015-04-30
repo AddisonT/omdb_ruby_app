@@ -1,0 +1,18 @@
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+<% if @movies != nil %> 
+<% @movies['Search'].each do |x| %>
+  <div>
+    <a href="/search/<%=x['imdbID'] %>"><%= x['Title']  %></a>
+  </div>
+  <% end %>
+<% else %>
+<div> Hey. Your search term sucks.</div>
+
+
+<% end %>
